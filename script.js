@@ -8,7 +8,7 @@ const mobileContact = document.querySelector(".mobile-contact");
 const hero = document.querySelector(".hero");
 const enquirySection = document.querySelector("#enquiry");
 
-const BUSINESS_WHATSAPP = "919115520020";
+const BUSINESS_WHATSAPP = "918360543374";
 
 function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -67,7 +67,7 @@ function buildWhatsAppMessage(data) {
   const company = data.get("company")?.trim() || "Not specified";
 
   return [
-    "Hi Karan, I have a property requirement.",
+    "Hello 3D Nest Infra, I have a property requirement.",
     "",
     `Name: ${data.get("name").trim()}`,
     `Company: ${company}`,
@@ -104,24 +104,30 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    rootMargin: "0px 0px -10% 0px",
-    threshold: 0.08,
-  },
-);
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      rootMargin: "0px 0px -10% 0px",
+      threshold: 0.08,
+    },
+  );
 
-document.querySelectorAll(".reveal").forEach((element) => {
-  revealObserver.observe(element);
-});
+  document.querySelectorAll(".reveal").forEach((element) => {
+    revealObserver.observe(element);
+  });
+} else {
+  document.querySelectorAll(".reveal").forEach((element) => {
+    element.classList.add("is-visible");
+  });
+}
 
 leadForm.addEventListener("input", (event) => {
   if (event.target.matches("[required]")) {
