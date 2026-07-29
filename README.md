@@ -29,6 +29,14 @@ The WhatsApp number is configured in:
 - `index.html` for direct links
 - `script.js` as `BUSINESS_WHATSAPP`
 
+## Google Analytics
+
+The site includes a consent-controlled GA4 integration and contact-event
+tracking in `analytics.js`. Replace `G-REPLACE_WITH_ID` with the GA4 web
+stream's Measurement ID before publishing. Google Analytics is loaded only
+after the visitor allows analytics; advertising storage and personalisation
+remain disabled.
+
 ## Public launch checklist
 
 - Confirm the primary public phone number.
@@ -46,7 +54,7 @@ The WhatsApp number is configured in:
   served at an office. Do not use a virtual office or mailbox.
 - Confirm the LinkedIn company-page URL.
 - Keep named client or assignment references limited to those approved for publication.
-- Add privacy and terms pages if a backend form, cookies or analytics are added.
+- Review the privacy notice whenever analytics, enquiry handling or data practices change.
 - Replace representative imagery with approved real property photography when
   suitable images are available.
 
@@ -56,6 +64,7 @@ Website imagery is stored under `assets/`.
 
 - `logo-icon.png`
 - `logo-lockup.png`
+- `social-preview.jpg`
 - `tricity-corridor-hero.webp`
 - `corporate-workspace.webp`
 - `executive-residence.webp`

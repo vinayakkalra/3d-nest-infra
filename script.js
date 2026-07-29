@@ -146,7 +146,13 @@ leadForm.addEventListener("submit", (event) => {
   }
 
   formStatus.textContent = "";
-  const message = buildWhatsAppMessage(new FormData(leadForm));
+  const formData = new FormData(leadForm);
+  const message = buildWhatsAppMessage(formData);
+  window.track3DNestEvent?.("generate_lead", {
+    method: "whatsapp",
+    requirement_type: formData.get("requirement"),
+    preferred_market: formData.get("market"),
+  });
   const whatsappUrl = `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 });

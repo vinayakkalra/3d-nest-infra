@@ -1171,6 +1171,83 @@ h3 {
   display: none;
 }
 
+.consent-banner {
+  position: fixed;
+  z-index: 220;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
+  width: min(calc(100% - 40px), 920px);
+  margin: 0 auto;
+  padding: 22px 24px;
+  color: var(--white);
+  background: rgba(8, 9, 9, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.34);
+}
+
+.consent-banner strong {
+  color: var(--gold-light);
+}
+
+.consent-banner p {
+  margin: 5px 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+}
+
+.consent-banner a {
+  color: var(--white);
+  border-bottom: 1px solid currentColor;
+}
+
+.consent-actions {
+  display: flex;
+  gap: 9px;
+}
+
+.consent-actions button,
+.privacy-action {
+  min-height: 42px;
+  padding: 10px 16px;
+  color: var(--white);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.consent-actions .consent-accept,
+.privacy-action {
+  color: var(--black);
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+}
+
+.privacy-layout {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.privacy-layout .article-copy h3 {
+  margin-top: 50px;
+}
+
+.privacy-action {
+  margin-top: 4px;
+}
+
+.privacy-updated {
+  margin-top: 54px;
+  font-size: 13px !important;
+}
+
 /* Search-focused service and location pages */
 
 .subpage {
@@ -2060,6 +2137,25 @@ h3 {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
+  }
+
+  .consent-banner {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    width: auto;
+    padding: 20px;
+  }
+
+  .consent-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .consent-actions button {
+    width: 100%;
   }
 
   .site-footer {
