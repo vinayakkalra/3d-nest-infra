@@ -1,4 +1,4 @@
-const GA_MEASUREMENT_ID = "G-REPLACE_WITH_ID";
+const GA_MEASUREMENT_ID = "G-CN3P0Q2FXM";
 const CONSENT_KEY = "3dnest_analytics_consent";
 const analyticsConfigured =
   /^G-[A-Z0-9]+$/.test(GA_MEASUREMENT_ID) &&

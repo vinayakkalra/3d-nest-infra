@@ -32,10 +32,9 @@ The WhatsApp number is configured in:
 ## Google Analytics
 
 The site includes a consent-controlled GA4 integration and contact-event
-tracking in `analytics.js`. Replace `G-REPLACE_WITH_ID` with the GA4 web
-stream's Measurement ID before publishing. Google Analytics is loaded only
-after the visitor allows analytics; advertising storage and personalisation
-remain disabled.
+tracking in `analytics.js`. The GA4 web stream Measurement ID is configured in
+that file. Google Analytics is loaded only after the visitor allows analytics;
+advertising storage and personalisation remain disabled.
 
 ## Public launch checklist
 
