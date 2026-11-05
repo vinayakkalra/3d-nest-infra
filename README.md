@@ -22,7 +22,7 @@ node validate.mjs
 ## Lead form
 
 The enquiry form validates the required fields and opens a prefilled WhatsApp
-message to `+91 836 054 3374`. No form data is stored by the website.
+message to `+91 62830 89690`. No form data is stored by the website.
 
 The WhatsApp number is configured in:
 
@@ -35,6 +35,12 @@ The site includes a consent-controlled GA4 integration and contact-event
 tracking in `analytics.js`. The GA4 web stream Measurement ID is configured in
 that file. Google Analytics is loaded only after the visitor allows analytics;
 advertising storage and personalisation remain disabled.
+
+`contact_click` records phone, email and direct WhatsApp link clicks.
+`enquiry_start` records a valid form submission that opens a prefilled WhatsApp
+message; it does not confirm that the visitor sent the message. Record received
+enquiries and qualified briefs in the lead tracker, and do not treat either
+browser event as a completed lead.
 
 ## Public launch checklist
 

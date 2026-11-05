@@ -8,7 +8,7 @@ const mobileContact = document.querySelector(".mobile-contact");
 const hero = document.querySelector(".hero");
 const enquirySection = document.querySelector("#enquiry");
 
-const BUSINESS_WHATSAPP = "918360543374";
+const BUSINESS_WHATSAPP = "916283089690";
 
 function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -148,7 +148,8 @@ leadForm.addEventListener("submit", (event) => {
   formStatus.textContent = "";
   const formData = new FormData(leadForm);
   const message = buildWhatsAppMessage(formData);
-  window.track3DNestEvent?.("generate_lead", {
+  // Opening WhatsApp records intent; a lead exists only once the message is received.
+  window.track3DNestEvent?.("enquiry_start", {
     method: "whatsapp",
     requirement_type: formData.get("requirement"),
     preferred_market: formData.get("market"),
