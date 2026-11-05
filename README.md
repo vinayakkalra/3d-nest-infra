@@ -19,6 +19,16 @@ Run the local SEO and link checks with:
 node validate.mjs
 ```
 
+After deployment, check that the public files match this checkout:
+
+```bash
+node audit-live.mjs
+```
+
+This read-only check reports missing or older public files and exits with code 1
+until they match. It does not verify search indexing, rankings or Analytics delivery.
+Use `node audit-live.mjs --json` for a dated machine-readable report.
+
 ## Lead form
 
 The enquiry form validates the required fields and opens a prefilled WhatsApp
@@ -45,7 +55,7 @@ browser event as a completed lead.
 ## Public launch checklist
 
 - Confirm the primary public phone number.
-- Verify that `partnerships@3dnestinfra.com` can receive mail before launch.
+- Verify that `karan@3dnestinfra.com` can receive mail before launch.
 - Point `3dnestinfra.com` to the chosen host and enforce HTTPS.
 - Confirm that both `https://3dnestinfra.com` and
   `https://www.3dnestinfra.com` resolve to one preferred version. Redirect the
@@ -87,6 +97,8 @@ site acquisition and Mohali/Tricity coverage. The current primary pages are:
 - `karan-kalra.html`: founder biography and contact routes;
 - `property-experience.html`: owner-supplied residential experience, existing
   corporate references and a retail requirement-stage example.
+- `home-buying-checklist-mohali.html`: an educational buyer checklist, with a
+  downloadable text brief at `assets/home-buying-brief.txt`.
 
 Service-page enquiry links preselect the appropriate service through a small
 allowlist in `script.js`. Query parameters do not carry personal enquiry data.

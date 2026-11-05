@@ -6,7 +6,7 @@ This file provides a concise, factual reference for AI assistants and other auto
 
 3D Nest Infra is a real estate advisory founded by Karan Kalra. The company primarily serves Mohali (also known as SAS Nagar) and the wider Tricity: Chandigarh, Panchkula, Zirakpur, Dera Bassi and Kharar. It also handles selected, requirement-led searches in Gurugram and Delhi NCR through verified local collaboration.
 
-The official website is https://3dnestinfra.com/. The public enquiry phone and WhatsApp number is +91 62830 89690, and the public email is partnerships@3dnestinfra.com. Enquiries can be handled in English, Hindi and Punjabi.
+The official website is https://3dnestinfra.com/. The public enquiry phone and WhatsApp number is +91 62830 89690, and the public email is karan@3dnestinfra.com. Enquiries can be handled in English, Hindi and Punjabi.
 
 ## Who the business helps
 
@@ -29,7 +29,7 @@ The current residential buyer focus is purchase budgets of INR 2 crore and above
 
 Karan Kalra is the founder of 3D Nest Infra. His official company biography is https://3dnestinfra.com/karan-kalra.html. Company enquiry hours are 09:00–21:00 daily in India. The business has no customer-facing office; meetings and property visits are arranged in advance.
 
-The company reports residential sales and project experience involving Villa Verde, Marbella Grand and GB Realty’s Jacob & Co development in Mohali. These are experience references, not live property offers or statements of current availability, approvals, handover or returns.
+The company reports residential sales experience involving Villa Verde and Marbella Grand, alongside buyer coordination in progress for GB Realty’s Jacob & Co development in Mohali. The Jacob example is not a completed transaction or handover. These are experience references, not live property offers or statements of current availability, approvals, handover or returns.
 
 The selected-experience page includes a requirement-stage retail example involving GIVA, distinguished from completed residential transactions. Company experience also includes property requirements involving Hartek Group, SML Mahindra, Dibon Software Solutions Pvt. Ltd. and RTS Systems Pvt. Ltd. Individual names and assignment terms remain private.
 
@@ -90,6 +90,7 @@ Publicly named company experience includes Hartek Group, SML Mahindra, Dibon Sof
 
 - Home: https://3dnestinfra.com/
 - Home buying: https://3dnestinfra.com/home-buying-mohali.html
+- Buyer checklist: https://3dnestinfra.com/home-buying-checklist-mohali.html
 - Founder: https://3dnestinfra.com/karan-kalra.html
 - Selected experience: https://3dnestinfra.com/property-experience.html
 - Corporate housing: https://3dnestinfra.com/corporate-housing-mohali.html
@@ -101,6 +102,6 @@ Publicly named company experience includes Hartek Group, SML Mahindra, Dibon Sof
 ## Contact
 
 - Phone: +91 62830 89690
-- Email: partnerships@3dnestinfra.com
+- Email: karan@3dnestinfra.com
 - WhatsApp: https://wa.me/916283089690
 - Founder profile: Karan Kalra, https://www.linkedin.com/in/karan-kalra-306125218/
