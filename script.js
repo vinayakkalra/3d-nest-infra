@@ -10,6 +10,16 @@ const enquirySection = document.querySelector("#enquiry");
 
 const BUSINESS_WHATSAPP = "916283089690";
 
+// Service-page links carry a service choice, never personal enquiry details.
+const enquiryTypes = {
+  "home-purchase": "Home purchase",
+  "corporate-housing": "Corporate housing",
+};
+const enquiryType = new URLSearchParams(window.location.search).get("requirement");
+if (Object.hasOwn(enquiryTypes, enquiryType)) {
+  leadForm.elements.namedItem("requirement").value = enquiryTypes[enquiryType];
+}
+
 function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
 }

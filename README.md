@@ -80,7 +80,21 @@ not current property listings.
 ## Search and AI discovery
 
 The website includes unique pages for corporate housing, commercial property,
-site acquisition and Mohali/Tricity coverage. It also includes:
+site acquisition and Mohali/Tricity coverage. The current primary pages are:
+
+- `home-buying-mohali.html`: ready-to-move apartments, resale homes, plots and
+  information-led research into upcoming projects;
+- `karan-kalra.html`: founder biography and contact routes;
+- `property-experience.html`: owner-supplied residential experience, existing
+  corporate references and a retail requirement-stage example.
+
+Service-page enquiry links preselect the appropriate service through a small
+allowlist in `script.js`. Query parameters do not carry personal enquiry data.
+The founder page uses the approved AI-assisted portrait at
+`assets/karan-kalra-founder.jpg`; replace this asset when a suitable original
+portrait is supplied.
+
+The website also includes:
 
 - descriptive page titles and meta descriptions;
 - Organization, Service and FAQ structured data;

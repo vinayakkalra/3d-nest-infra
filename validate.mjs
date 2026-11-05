@@ -57,7 +57,8 @@ for (const file of pages) {
       continue;
     }
 
-    const [filePart, fragment] = rawUrl.split("#");
+    const [pathAndQuery, fragment] = rawUrl.split("#");
+    const filePart = pathAndQuery.split("?")[0];
     const targetFile = filePart || file;
     const targetPath = path.join(root, targetFile);
 
