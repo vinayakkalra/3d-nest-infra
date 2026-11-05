@@ -90,6 +90,9 @@ site acquisition and Mohali/Tricity coverage. The current primary pages are:
 
 Service-page enquiry links preselect the appropriate service through a small
 allowlist in `script.js`. Query parameters do not carry personal enquiry data.
+The current residential buying audience has budgets of ₹2 crore and above.
+Buying enquiries have an optional budget selector; it is disabled and omitted
+from the WhatsApp message for rental and corporate housing requirements.
 The founder page uses the approved AI-assisted portrait at
 `assets/karan-kalra-founder.jpg`; replace this asset when a suitable original
 portrait is supplied.

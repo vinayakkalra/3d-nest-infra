@@ -20,6 +20,19 @@ if (Object.hasOwn(enquiryTypes, enquiryType)) {
   leadForm.elements.namedItem("requirement").value = enquiryTypes[enquiryType];
 }
 
+const purchaseRequirements = new Set(["Home purchase", "Property purchase or investment"]);
+const requirementField = leadForm.elements.namedItem("requirement");
+const purchaseBudgetField = leadForm.elements.namedItem("purchaseBudget");
+
+function updatePurchaseBudget() {
+  const isPurchase = purchaseRequirements.has(requirementField.value);
+  leadForm.querySelector("[data-purchase-budget]").hidden = !isPurchase;
+  purchaseBudgetField.disabled = !isPurchase;
+}
+
+requirementField.addEventListener("change", updatePurchaseBudget);
+updatePurchaseBudget();
+
 function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
 }
@@ -75,6 +88,9 @@ function validateLeadForm(form) {
 
 function buildWhatsAppMessage(data) {
   const company = data.get("company")?.trim() || "Not specified";
+  const purchaseBudget = purchaseRequirements.has(data.get("requirement"))
+    ? data.get("purchaseBudget")
+    : null;
 
   return [
     "Hello 3D Nest Infra, I have a property requirement.",
@@ -83,6 +99,7 @@ function buildWhatsAppMessage(data) {
     `Company: ${company}`,
     `Phone: ${data.get("phone").trim()}`,
     `Requirement: ${data.get("requirement")}`,
+    ...(purchaseBudget ? [`Buying budget: ${purchaseBudget}`] : []),
     `Preferred market: ${data.get("market")}`,
     `Timeline: ${data.get("timeline")}`,
     "",
