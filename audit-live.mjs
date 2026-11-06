@@ -18,6 +18,9 @@ const files = [
   "llms-full.txt",
   "assets/karan-kalra-founder.jpg",
   "assets/home-buying-brief.txt",
+  "comparison.js",
+  "comparison.css",
+  "assets/property-comparison-worksheet.txt",
 ];
 const hash = (bytes) => crypto.createHash("sha256").update(bytes).digest("hex");
 const results = [];

@@ -99,9 +99,16 @@ site acquisition and Mohali/Tricity coverage. The current primary pages are:
   corporate references and a retail requirement-stage example.
 - `home-buying-checklist-mohali.html`: an educational buyer checklist, with a
   downloadable text brief at `assets/home-buying-brief.txt`.
+- `property-comparison-mohali.html`: a three-property worksheet with a blank
+  offline text sheet, completed-text download and a full print summary.
 
 Service-page enquiry links preselect the appropriate service through a small
 allowlist in `script.js`. Query parameters do not carry personal enquiry data.
+The comparison worksheet uses only `comparison.js`; it does not load Analytics
+or send, store or add worksheet entries to an enquiry. Entries last in the current
+tab until the visitor leaves or refreshes, so the page prompts them to download or
+print a copy. The rest of the website retains its existing consented analytics.
+
 Home-buying enquiries are guided by current budget, requirements and timing,
 without a minimum budget eligibility rule. Buying enquiries have an optional
 free-text budget field; it is disabled and omitted from the WhatsApp message
