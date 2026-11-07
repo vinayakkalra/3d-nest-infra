@@ -1814,17 +1814,44 @@ h3 {
     display: none;
   }
 
-  .inner-header {
+  .site-header.inner-header {
+    position: static;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 8px 24px;
+    padding-top: 16px;
+    padding-bottom: 12px;
+  }
+
+  .inner-header .brand {
+    min-width: 0;
+    max-width: 100%;
   }
 
   .inner-header .header-cta {
     display: inline-flex;
+    flex-shrink: 0;
   }
 
-  .inner-nav {
-    display: none;
+  .inner-header .inner-nav {
+    display: flex;
+    flex: 1 0 100%;
+    order: 1;
+    flex-wrap: wrap;
+    gap: 4px 24px;
+  }
+
+  .inner-header .inner-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    max-width: 100%;
+    padding: 8px 0;
+  }
+
+  .subpage-hero {
+    padding-top: 64px;
   }
 
   .menu-toggle {
@@ -2282,7 +2309,7 @@ h3 {
   }
 
   .subpage-hero {
-    padding: 132px 0 72px;
+    padding: 48px 0 72px;
   }
 
   .subpage-hero-grid,
