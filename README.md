@@ -52,6 +52,16 @@ tracking in `analytics.js`. The GA4 web stream Measurement ID is configured in
 that file. Google Analytics is loaded only after the visitor allows analytics;
 advertising storage and personalisation remain disabled.
 
+Declining or resetting Analytics also stops collection in other open tabs through
+storage events. Restored pages recheck the choice on `pageshow`, and each custom
+event checks the latest readable stored choice before it is queued. Withdrawal
+sets Google's Analytics disable flag and denies consent without reloading an
+unfinished enquiry. If storage is blocked, an explicit choice applies to the
+current page; an observed change in shared storage takes precedence. A grant in
+another tab does not start collection in an already-open page. Existing cookies
+are not claimed to be deleted. Run `node test-analytics.mjs` for the shared-tab and
+storage-failure regression checks; the harness never fetches Google's script.
+
 `contact_click` records phone, email and direct WhatsApp link clicks.
 `enquiry_start` records a valid form submission that opens a prefilled WhatsApp
 message; it does not confirm that the visitor sent the message. Record received

@@ -5,6 +5,9 @@ const analyticsConfigured =
   GA_MEASUREMENT_ID !== "G-REPLACE_WITH_ID";
 
 if (analyticsConfigured) {
+  const googleAnalyticsDisableKey = `ga-disable-${GA_MEASUREMENT_ID}`;
+  // Set this before any gtag calls; a loaded tag must also stop on withdrawal.
+  window[googleAnalyticsDisableKey] = true;
   window.dataLayer = window.dataLayer || [];
   window.gtag =
     window.gtag ||
@@ -22,21 +25,62 @@ if (analyticsConfigured) {
 
   let analyticsGranted = false;
   let googleTagLoaded = false;
+  let appliedConsent = "denied";
+  let pageChoice;
+  let unpersistedChoiceSnapshot = null;
 
   function readConsent() {
     try {
-      return window.localStorage.getItem(CONSENT_KEY);
+      return { available: true, value: window.localStorage.getItem(CONSENT_KEY) };
     } catch {
-      return null;
+      return { available: false, value: null };
     }
   }
 
   function saveConsent(value) {
+    pageChoice = value;
     try {
-      window.localStorage.setItem(CONSENT_KEY, value);
+      if (value === null) {
+        window.localStorage.removeItem(CONSENT_KEY);
+      } else {
+        window.localStorage.setItem(CONSENT_KEY, value);
+      }
+      unpersistedChoiceSnapshot = null;
     } catch {
       // The choice applies to the current page even if storage is unavailable.
+      unpersistedChoiceSnapshot = readConsent();
     }
+  }
+
+  function currentConsent() {
+    const saved = readConsent();
+    if (!saved.available) {
+      return pageChoice;
+    }
+
+    // A failed write can leave an older readable choice behind. Honour the
+    // explicit page choice only while that snapshot remains unchanged.
+    if (
+      unpersistedChoiceSnapshot?.available &&
+      saved.value === unpersistedChoiceSnapshot.value
+    ) {
+      return pageChoice;
+    }
+    unpersistedChoiceSnapshot = null;
+    return saved.value;
+  }
+
+  function updateGoogleConsent(value) {
+    if (appliedConsent === value) {
+      return;
+    }
+    appliedConsent = value;
+    window.gtag("consent", "update", {
+      analytics_storage: value,
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+    });
   }
 
   function loadGoogleTag() {
@@ -59,27 +103,25 @@ if (analyticsConfigured) {
     });
   }
 
-  function grantAnalytics() {
+  function grantAnalytics(persist = true) {
+    if (persist) {
+      saveConsent("granted");
+    }
     analyticsGranted = true;
-    saveConsent("granted");
-    window.gtag("consent", "update", {
-      analytics_storage: "granted",
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-    });
+    window[googleAnalyticsDisableKey] = false;
+    updateGoogleConsent("granted");
     loadGoogleTag();
   }
 
-  function denyAnalytics() {
+  function stopAnalytics() {
     analyticsGranted = false;
+    window[googleAnalyticsDisableKey] = true;
+    updateGoogleConsent("denied");
+  }
+
+  function denyAnalytics() {
     saveConsent("denied");
-    window.gtag("consent", "update", {
-      analytics_storage: "denied",
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-    });
+    stopAnalytics();
   }
 
   function removeConsentBanner() {
@@ -121,23 +163,57 @@ if (analyticsConfigured) {
     document.body.append(banner);
   }
 
+  function reconcileConsent(choice = currentConsent()) {
+    if (choice !== "granted") {
+      stopAnalytics();
+    }
+    if (choice === "granted" || choice === "denied") {
+      removeConsentBanner();
+    } else if (document.readyState !== "loading") {
+      showConsentBanner();
+    }
+    // A grant in another tab does not start collection in this open page.
+  }
+
   window.track3DNestEvent = function track3DNestEvent(eventName, parameters = {}) {
-    if (!analyticsGranted) {
+    const choice = currentConsent();
+    // Storage events are asynchronous. Check the shared choice before every
+    // custom event so an older tab cannot outrun a reset or decline elsewhere.
+    if (!analyticsGranted || choice !== "granted") {
+      reconcileConsent(choice);
       return;
     }
 
     window.gtag("event", eventName, parameters);
   };
 
-  const savedConsent = readConsent();
-  if (savedConsent === "granted") {
-    grantAnalytics();
-  } else if (savedConsent === "denied") {
-    denyAnalytics();
-  } else if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", showConsentBanner, { once: true });
-  } else {
-    showConsentBanner();
+  window.addEventListener("storage", (event) => {
+    if (event.key !== CONSENT_KEY && event.key !== null) {
+      return;
+    }
+    try {
+      if (event.storageArea !== window.localStorage) {
+        return;
+      }
+    } catch {
+      // Still honour a received withdrawal if storage access became blocked.
+    }
+    if (event.newValue !== "granted") {
+      pageChoice = event.newValue === "denied" ? "denied" : null;
+      unpersistedChoiceSnapshot = null;
+    }
+    // A queued event may predate a newer explicit choice. Read current storage
+    // when possible; the received negative choice is the blocked-storage fallback.
+    reconcileConsent();
+  });
+  window.addEventListener("pageshow", () => reconcileConsent());
+
+  if (currentConsent() === "granted") {
+    grantAnalytics(false);
+  }
+  reconcileConsent();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => reconcileConsent(), { once: true });
   }
 
   document.addEventListener("click", (event) => {
@@ -170,11 +246,8 @@ if (analyticsConfigured) {
       return;
     }
 
-    try {
-      window.localStorage.removeItem(CONSENT_KEY);
-    } catch {
-      // Reloading still gives the visitor another choice for this page.
-    }
-    window.location.reload();
+    saveConsent(null);
+    stopAnalytics();
+    reconcileConsent();
   });
 }
