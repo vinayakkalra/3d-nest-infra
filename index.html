@@ -57,8 +57,7 @@
     <link rel="icon" href="assets/logo-icon.png" type="image/png" />
     <link rel="canonical" href="https://3dnestinfra.com/" />
     <link rel="preload" href="assets/tricity-corridor-hero.webp" as="image" type="image/webp" />
-    <script>document.documentElement.classList.add("js");</script>
-    <link rel="stylesheet" href="styles.css?v=20261105-2" />
+    <link rel="stylesheet" href="styles.css?v=20261107-1" />
     <title>Home Buying & Corporate Housing in Mohali | 3D Nest Infra</title>
     <script type="application/ld+json">
       {
@@ -744,7 +743,7 @@
 
       <section class="enquiry section" id="enquiry" aria-labelledby="enquiry-title">
         <div class="shell enquiry-layout">
-          <div class="enquiry-copy reveal">
+          <div class="enquiry-copy">
             <p class="eyebrow">Start with the requirement</p>
             <h2 id="enquiry-title">Tell us what the property needs to accomplish.</h2>
             <p>
@@ -761,7 +760,13 @@
             </a>
           </div>
 
-          <form class="lead-form reveal" data-lead-form novalidate>
+          <form class="lead-form" data-lead-form novalidate>
+            <div class="enquiry-fallback" data-enquiry-fallback>
+              <strong>Contact us directly</strong>
+              <p>The guided enquiry form is unavailable until it has loaded. You can still message the team directly.</p>
+              <a class="text-link" href="https://wa.me/916283089690?text=Hello%203D%20Nest%20Infra%2C%20I%20have%20a%20property%20requirement." target="_blank" rel="noreferrer">Open WhatsApp directly <span aria-hidden="true">-&gt;</span></a>
+            </div>
+            <fieldset class="lead-form-fields" data-lead-form-fields aria-label="Property enquiry details" disabled>
             <div class="form-row">
               <label>
                 Your name
@@ -861,6 +866,7 @@
               prefilled message for your review.
             </p>
             <p class="form-status" role="alert" data-form-status></p>
+            </fieldset>
           </form>
         </div>
       </section>
@@ -935,6 +941,6 @@
     </a>
 
     <script src="analytics.js"></script>
-    <script src="script.js?v=20261105-3"></script>
+    <script src="script.js?v=20261107-1"></script>
   </body>
 </html>

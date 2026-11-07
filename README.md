@@ -34,6 +34,12 @@ Use `node audit-live.mjs --json` for a dated machine-readable report.
 The enquiry form validates the required fields and opens a prefilled WhatsApp
 message to `+91 62830 89690`. No form data is stored by the website.
 
+The controls start inside a disabled fieldset. `script.js` enables the builder
+only after its submit handler and setup are ready; if JavaScript is blocked or
+setup fails, a visible direct WhatsApp fallback and the phone/email links remain
+available. Named enquiry fields cannot fall back to a native GET submission.
+Run `node test-enquiry.mjs` for the fallback and message-builder regression checks.
+
 The WhatsApp number is configured in:
 
 - `index.html` for direct links

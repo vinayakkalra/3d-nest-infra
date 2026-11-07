@@ -2,6 +2,8 @@ const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const mobileMenu = document.querySelector("[data-mobile-menu]");
 const leadForm = document.querySelector("[data-lead-form]");
+const leadFields = leadForm.querySelector("[data-lead-form-fields]");
+const enquiryFallback = leadForm.querySelector("[data-enquiry-fallback]");
 const formStatus = document.querySelector("[data-form-status]");
 const yearElement = document.querySelector("[data-year]");
 const mobileContact = document.querySelector(".mobile-contact");
@@ -167,6 +169,11 @@ leadForm.addEventListener("input", (event) => {
 leadForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  // HTML starts closed: never submit named fields to the current page if setup fails.
+  if (leadFields.disabled) {
+    return;
+  }
+
   if (!validateLeadForm(leadForm)) {
     formStatus.textContent = "Please complete the highlighted fields.";
     return;
@@ -186,3 +193,9 @@ leadForm.addEventListener("submit", (event) => {
 });
 
 yearElement.textContent = new Date().getFullYear();
+
+// Only enhance and enable the builder after its submit handler and setup exist.
+// If this script is blocked or throws earlier, direct contact routes remain usable.
+document.documentElement.classList.add("js");
+leadFields.disabled = false;
+enquiryFallback.hidden = true;
