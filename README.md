@@ -111,8 +111,8 @@ site acquisition and Mohali/Tricity coverage. The current primary pages are:
 - `home-buying-mohali.html`: ready-to-move apartments, resale homes, plots and
   information-led research into upcoming projects;
 - `karan-kalra.html`: founder biography and contact routes;
-- `property-experience.html`: owner-supplied residential experience, existing
-  corporate references and a retail requirement-stage example.
+- `property-experience.html`: owner-supplied residential experience and existing
+  corporate references.
 - `home-buying-checklist-mohali.html`: an educational buyer checklist, with a
   downloadable text brief at `assets/home-buying-brief.txt`.
 - `property-comparison-mohali.html`: a three-property worksheet with a blank
