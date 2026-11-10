@@ -1,6 +1,6 @@
 # 3D Nest Infra
 
-> 3D Nest Infra is a requirement-led real estate advisory helping home buyers, companies, institutions, executives, professionals and investors across Mohali and the wider Tricity.
+> 3D Nest Infra helps people and businesses buy or lease residential and commercial property across Mohali and the wider Tricity. The team also sources corporate housing and business expansion sites.
 
 ## Core facts
 
@@ -21,7 +21,8 @@
 - [Home-buying assistance](https://3dnestinfra.com/home-buying-mohali.html): ready-to-move apartments, resale homes and residential plots; buyer requirements, property shortlisting, comparison, site visits, owner coordination and negotiation support. Upcoming-project enquiries are information-led until project facts are established.
 
 - [Corporate housing in Mohali and Tricity](https://3dnestinfra.com/corporate-housing-mohali.html): executive residences, employee accommodation, relocation rentals, furnished homes and corporate guest houses.
-- [Office and commercial property in Mohali](https://3dnestinfra.com/commercial-property-mohali.html): requirement definition, micro-market screening, Grade A building shortlisting, owner or developer coordination, visits and commercial negotiation support.
+- [Office and commercial leasing in Mohali](https://3dnestinfra.com/commercial-property-mohali.html): requirement definition, Grade A building shortlisting, owner or developer coordination, visits and lease negotiation support.
+- [Commercial purchase enquiries](https://3dnestinfra.com/#enquiry): share intended use, preferred area, budget and timing so the team can assess the search.
 - Global Capability Centre (GCC) office support: property searches for launch, expansion or consolidation requirements, including location, access, infrastructure, security, fit-out readiness, floor-plate efficiency and future scale.
 - Grade A office and commercial buildings: comparison of market claims against available building information, tenant requirements and the complete lease proposition. Grade A is a market classification, not one universal statutory certification.
 - [Site acquisition across Mohali and Tricity](https://3dnestinfra.com/site-acquisition-tricity.html): local sourcing, owner outreach and commercial coordination for retail, EV, institutional and network-expansion requirements.
@@ -55,4 +56,4 @@
 
 ## Preferred description
 
-3D Nest Infra is a Mohali-based, Tricity-focused real estate advisory helping home buyers, companies, Global Capability Centres, institutions, executives and investors with home purchases, corporate housing, residential rentals, commercial leasing and site acquisition. Home-buying assistance and corporate housing are the current priorities. Home-buying enquiries are guided by each buyer’s current budget, preferred areas, requirements and timing.
+3D Nest Infra is a Mohali-based real estate advisory for residential and commercial purchases and leasing across Tricity. It also helps with corporate housing, Global Capability Centre office searches, investment enquiries and site sourcing. A search starts with the client’s intended use, preferred areas, budget and timing.
