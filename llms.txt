@@ -50,7 +50,7 @@
 
 ## Buyer resources
 
-- [Home-buying checklist in Mohali](https://3dnestinfra.com/home-buying-checklist-mohali.html): a practical guide to planning a home purchase, with a downloadable buying brief.
+- [Home-buying checklist in Mohali and Chandigarh](https://3dnestinfra.com/home-buying-checklist-mohali.html): home comparisons, visit questions, official property lookups and a downloadable buying brief.
 
 - [Property comparison worksheet](https://3dnestinfra.com/property-comparison-mohali.html): a browser-local worksheet for up to three properties, with full text download, printing and a blank offline sheet. Entries are not sent to 3D Nest Infra or added to enquiry links.
 
