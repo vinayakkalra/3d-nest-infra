@@ -16,6 +16,8 @@ const BUSINESS_WHATSAPP = "916283089690";
 const enquiryTypes = {
   "home-purchase": "Home purchase",
   "corporate-housing": "Corporate housing",
+  "commercial-lease": "Office or commercial lease",
+  "commercial-purchase": "Property purchase or investment",
 };
 const enquiryType = new URLSearchParams(window.location.search).get("requirement");
 if (Object.hasOwn(enquiryTypes, enquiryType)) {
