@@ -92,6 +92,7 @@ function validateLeadForm(form) {
 
 function buildWhatsAppMessage(data) {
   const company = data.get("company")?.trim() || "Not specified";
+  const discoverySource = data.get("discoverySource")?.trim();
   const purchaseBudget = purchaseRequirements.has(data.get("requirement"))
     ? data.get("purchaseBudget")
     : null;
@@ -106,6 +107,7 @@ function buildWhatsAppMessage(data) {
     ...(purchaseBudget ? [`Buying budget: ${purchaseBudget}`] : []),
     `Preferred market: ${data.get("market")}`,
     `Timeline: ${data.get("timeline")}`,
+    ...(discoverySource ? [`Found through: ${discoverySource}`] : []),
     "",
     `Brief: ${data.get("details").trim()}`,
   ].join("\n");

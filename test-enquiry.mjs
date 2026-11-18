@@ -149,11 +149,14 @@ assert.equal(home.error, undefined); assert.equal(home.leadFields.disabled, fals
 assert.equal(home.fields.requirement.value, "Home purchase"); assert.equal(home.fields.purchaseBudget.disabled, false);
 assert.equal(home.submit(), true); assert.equal(home.opened.length, 0); assert.equal(home.focused(), "name");
 home.fill(); home.fields.purchaseBudget.value = "₹1 crore / still exploring";
+home.fields.discoverySource.value = "ChatGPT or another AI assistant";
+assert.equal(home.fields.discoverySource.required, false);
 assert.equal(home.submit(), true); assert.equal(home.opened.length, 1);
 const target = new URL(home.opened[0][0]), message = target.searchParams.get("text");
 assert.equal(target.hostname, "wa.me"); assert.equal(target.pathname, "/916283089690");
 assert.ok(message.includes(home.fields.name.value)); assert.ok(message.includes(home.fields.details.value));
 assert.ok(message.includes("Buying budget: ₹1 crore / still exploring"));
+assert.ok(message.includes("Found through: ChatGPT or another AI assistant"));
 assert.deepEqual(Object.keys(home.analytics[0][1]).sort(), ["method", "preferred_market", "requirement_type"]);
 assert.ok(!JSON.stringify(home.analytics).includes(home.fields.name.value));
 const rental = fixture({ search: "?requirement=corporate-housing" });
@@ -162,4 +165,5 @@ assert.equal(rental.fields.requirement.value, "Corporate housing"); assert.equal
 rental.submit(); assert.ok(!new URL(rental.opened[0][0]).searchParams.get("text").includes("Buying budget:"));
 const optional = fixture({ search: "?requirement=home-purchase" }); optional.fill(); optional.submit();
 assert.ok(!new URL(optional.opened[0][0]).searchParams.get("text").includes("Buying budget:"));
+assert.ok(!new URL(optional.opened[0][0]).searchParams.get("text").includes("Found through:"));
 console.log("Enquiry checks passed: initially disabled HTML contract, early/late failure stays closed, ready-only enable, validation, service preselection, optional budget and Unicode WhatsApp draft. No outbound message sent.");
