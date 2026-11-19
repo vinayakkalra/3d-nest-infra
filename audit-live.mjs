@@ -21,6 +21,8 @@ const files = [
   "comparison.js",
   "comparison.css",
   "assets/property-comparison-worksheet.txt",
+  "indexnow-key.txt",
+  "assets/home-buying-checklist-preview.jpg",
 ];
 const hash = (bytes) => crypto.createHash("sha256").update(bytes).digest("hex");
 const results = [];

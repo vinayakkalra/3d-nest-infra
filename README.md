@@ -142,3 +142,40 @@ The website also includes:
 - `llms.txt` and `llms-full.txt` with a factual business reference.
 
 The confirmed canonical origin is `https://3dnestinfra.com`.
+
+### Update notifications after deployment
+
+`indexnow.mjs` can notify IndexNow's participating search engines about selected
+updated pages. It is an operator-run tool, not a visitor script or scheduled job.
+The UTF-8 `indexnow-key.txt` file is a public domain-ownership verification value;
+it is served deliberately, and is not an account password or a server credential.
+Do not replace it with a private API credential. Do not add it to the sitemap.
+
+Preview the selected URLs without making any network requests:
+
+```bash
+node indexnow.mjs home-buying-mohali.html home-buying-checklist-mohali.html commercial-property-mohali.html
+```
+
+After deploying this same checkout, submit that batch once:
+
+```bash
+node indexnow.mjs --submit home-buying-mohali.html home-buying-checklist-mohali.html commercial-property-mohali.html
+```
+
+The tool accepts only canonical sitemap pages without query strings or fragments.
+It verifies the public key file and exact live bytes of every selected page before
+sending one notification to `https://api.indexnow.org/indexnow`. An older or failed
+deployment stops submission. HTTP 200 means received; HTTP 202 means received with
+key validation pending. Neither means crawled, indexed, ranked or cited by an AI
+answer. There are no automatic retries. Submit changed pages, not every page on a
+timer. This does not request a Google recrawl.
+
+Run `node --test test-indexnow.mjs` for URL, deployment and receipt checks.
+Protocol reference: <https://www.indexnow.org/documentation>.
+
+The buyer checklist has its own 1200 by 630 social-preview image at
+`assets/home-buying-checklist-preview.jpg`. It is an educational brand graphic,
+not a photograph or an available property. Only sharing metadata was changed;
+the visible guide's editorial review date is unchanged. Sharing platforms may
+cache an older preview until they refresh the URL.
