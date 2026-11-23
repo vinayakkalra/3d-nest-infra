@@ -8,7 +8,7 @@ const observed = "https://3dnestinfra.com/?utm_source=instagram&utm_medium=organ
 
 function visit(href, { readyState = "complete", sectionPresent = true, historyBlocked = false } = {}) {
   const state = { existing: "state" };
-  const replacements = [], scrolls = [], listeners = [];
+  const replacements = [], scrolls = [], listeners = [], navigationListeners = [], animationFrames = [];
   const location = { href };
   const document = {
     readyState,
@@ -24,8 +24,14 @@ function visit(href, { readyState = "complete", sectionPresent = true, historyBl
       location.href = new URL(nextURL, location.href).href;
     },
   };
-  vm.runInNewContext(source, { URL, window: { location, history }, document });
-  return { location, state, replacements, scrolls, listeners };
+  const window = {
+    location,
+    history,
+    addEventListener: (name, callback, options) => navigationListeners.push({ name, callback, options }),
+    requestAnimationFrame: (callback) => animationFrames.push(callback),
+  };
+  vm.runInNewContext(source, { URL, window, document });
+  return { location, state, replacements, scrolls, listeners, navigationListeners, animationFrames };
 }
 
 test("the observed bio link restores enquiry routing and campaign attribution", () => {
@@ -65,6 +71,7 @@ for (const [label, href] of [
     assert.equal(result.replacements.length, 0);
     assert.equal(result.scrolls.length, 0);
     assert.equal(result.listeners.length, 0);
+    assert.equal(result.navigationListeners.length, 0);
   });
 }
 
@@ -84,6 +91,21 @@ test("a missing section or blocked History API does not break other scripts", ()
   const result = visit(observed, { historyBlocked: true });
   assert.equal(result.location.href, observed);
   assert.equal(result.scrolls.length, 0);
+});
+
+test("the recovered destination is reapplied after navigation restores scroll", () => {
+  const result = visit(observed, { readyState: "loading" });
+  result.listeners[0].callback();
+  assert.equal(result.scrolls.length, 1);
+  assert.equal(result.navigationListeners.length, 1);
+  assert.equal(result.navigationListeners[0].name, "pageshow");
+  assert.equal(result.navigationListeners[0].options.once, true);
+  result.navigationListeners[0].callback();
+  assert.equal(result.scrolls.length, 1);
+  assert.equal(result.animationFrames.length, 1);
+  result.animationFrames[0]();
+  assert.equal(result.scrolls.length, 2);
+  assert.equal(result.scrolls[1].behavior, "instant");
 });
 
 test("homepage recovery runs before Analytics and the enquiry builder", () => {

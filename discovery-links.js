@@ -31,6 +31,9 @@
     // Initial landing should not animate through the entire mobile homepage.
     document.getElementById("enquiry")?.scrollIntoView({ block: "start", behavior: "instant" });
   };
+  // A reload can restore the old scroll position after DOMContentLoaded.
+  // Reapply the initial destination after that navigation lifecycle completes.
+  window.addEventListener("pageshow", () => window.requestAnimationFrame(showEnquiry), { once: true });
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", showEnquiry, { once: true });
   } else {
