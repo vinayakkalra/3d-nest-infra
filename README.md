@@ -40,6 +40,13 @@ setup fails, a visible direct WhatsApp fallback and the phone/email links remain
 available. Named enquiry fields cannot fall back to a native GET submission.
 Run `node test-enquiry.mjs` for the fallback and message-builder regression checks.
 
+`discovery-links.js` recovers the observed Instagram bio link whose campaign
+contains an encoded `#enquiry`. On the homepage only, it restores the campaign
+to `property_services` and opens the enquiry section before Analytics reads the
+URL. Other parameters, explicit fragments, campaigns and pages remain unchanged.
+It does not submit a form or change consent. Run
+`node --test test-discovery-links.mjs` for the routing and script-order checks.
+
 The WhatsApp number is configured in:
 
 - `index.html` for direct links

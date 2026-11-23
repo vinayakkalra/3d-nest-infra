@@ -12,6 +12,7 @@ const files = [
   "styles.css",
   "script.js",
   "analytics.js",
+  "discovery-links.js",
   "robots.txt",
   "sitemap.xml",
   "llms.txt",
